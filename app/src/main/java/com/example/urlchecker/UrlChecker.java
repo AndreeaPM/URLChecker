@@ -7,6 +7,7 @@ import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class UrlChecker implements Runnable {
 
@@ -38,7 +39,7 @@ public class UrlChecker implements Runnable {
 
     private void updateLastChecked()
     {
-        DateFormat df = new SimpleDateFormat("dd MM yyyy, HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy, HH:mm:ss", Locale.UK);
         lastChecked = df.format(Calendar.getInstance().getTime());
     }
 
