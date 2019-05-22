@@ -1,5 +1,7 @@
 package com.example.urlchecker;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +21,14 @@ public class Add extends AppCompatActivity {
 
 
         findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener() {
+            private void ShowError(Context context)
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Invalid url");
+                builder.setCancelable(true);
+                builder.setNeutralButton("Ok",null);
+            }
+
             @Override
             public void onClick(View v) {
 
@@ -28,9 +38,14 @@ public class Add extends AppCompatActivity {
                 //TODO validate interval min, etc
                 URI uri = null;
                 try {
-                    uri = new URI(url.getText().toString());
+                    String inputUrl = url.getText().toString();
+                    if(!inputUrl.startsWith("https://") && !inputUrl.startsWith("http://"))
+                        inputUrl = "https://" + inputUrl;
+
+                    uri = new URI(inputUrl);
                 } catch (URISyntaxException e) {
-                    e.printStackTrace();//TODO error here
+                    ShowError(v.getContext());
+                    return;
                 }
                 UrlChecker newUrl = new UrlChecker(Integer.parseInt(interval.getText().toString()) * 1000, uri, name.getText().toString());
 

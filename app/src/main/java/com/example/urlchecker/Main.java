@@ -34,6 +34,7 @@ public class Main extends AppCompatActivity {
 
 
         ListView listView = (ListView) findViewById(R.id.listView);
+        UrlChecker.appContext = getApplicationContext();
 
         if (adapter == null) {
             adapter = new UrlAdapter(this, urlList);
@@ -58,6 +59,8 @@ public class Main extends AppCompatActivity {
                 startActivity(detailsIntent);
             }
         });
+
+        //DataPersistence.Debug();
 
         //TESTING
 //        try {
