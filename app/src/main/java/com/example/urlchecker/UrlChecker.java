@@ -91,7 +91,6 @@ public class UrlChecker implements Runnable, AsyncResponse {
         else {
             double difference = lastHash.compareTo(hash);
             if (difference > minDif) {
-                //TODO notif
                 Log.d("@@@NOTIF@@@", uri.toString());
                 showNotification(uri.toString());
             }

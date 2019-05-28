@@ -2,6 +2,7 @@ package com.example.urlchecker;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,9 @@ public class Details extends AppCompatActivity {
         TextView name = findViewById(R.id.nameDetails);
         TextView lastDate = findViewById(R.id.dateDetails);
         TextView interval = findViewById(R.id.intervalDetails);
+        TextView minDif = findViewById(R.id.minDetails);
+
+
 
         try {
             final UrlChecker selected = DataPersistence.Read().get(position);
@@ -36,7 +40,16 @@ public class Details extends AppCompatActivity {
             name.setText(selected.getName());
             lastDate.setText(selected.getLastChecked());
             interval.setText(String.valueOf(selected.getInterval() / 1000));
+            minDif.setText(String.valueOf((int)(selected.getMinDif() * 100)));
 
+            findViewById(R.id.accessButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(selected.getUri().toString()));
+                    startActivity(intent);
+                }
+            });
 
             findViewById(R.id.deleteButton).setOnClickListener(new View.OnClickListener() {
                 @Override

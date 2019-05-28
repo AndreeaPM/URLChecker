@@ -10,8 +10,8 @@
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="136dp"
         android:text="Save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intervalInput" />
@@ -20,8 +20,8 @@
         android:id="@+id/intervalInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="Check interval (seconds)"
         android:inputType="number"
@@ -33,7 +33,7 @@
         android:id="@+id/urlInput"
         android:layout_width="345dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="URL"
         android:inputType="textUri"
@@ -52,5 +52,24 @@
         android:singleLine="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/urlInput" />
+
+    <SeekBar
+        android:id="@+id/minInput"
+        android:layout_width="348dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="80dp"
+        android:max="100"
+        android:progress="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intervalInput" />
+
+    <TextView
+        android:id="@+id/minLabel"
+        android:layout_width="171dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/min_for_notification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intervalInput" />
 
 </android.support.constraint.ConstraintLayout>
